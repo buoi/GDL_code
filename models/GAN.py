@@ -1,6 +1,8 @@
 
-from keras.layers import Input, Conv2D, Flatten, Dense, Conv2DTranspose, Reshape, Lambda, Activation, BatchNormalization, LeakyReLU, Dropout, ZeroPadding2D, UpSampling2D
-from keras.layers.merge import _Merge
+from keras.layers import Input, Conv2D, Flatten, Dense, Conv2DTranspose, Reshape
+from keras.layers import Lambda, Activation, BatchNormalization, LeakyReLU
+from keras.layers import Dropout, ZeroPadding2D, UpSampling2D, Average
+
 
 from keras.models import Model, Sequential
 from keras import backend as K
@@ -331,7 +333,7 @@ class GAN():
         self.model.save(os.path.join(run_folder, 'model.h5'))
         self.discriminator.save(os.path.join(run_folder, 'discriminator.h5'))
         self.generator.save(os.path.join(run_folder, 'generator.h5'))
-        pkl.dump(self, open( os.path.join(run_folder, "obj.pkl"), "wb" ))
+        #pkl.dump(self, open( os.path.join(run_folder, "obj.pkl"), "wb" ))
 
     def load_weights(self, filepath):
         self.model.load_weights(filepath)
